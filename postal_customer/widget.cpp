@@ -11,6 +11,12 @@ Widget::~Widget()
     delete layout;
 }
 
+void Widget::init_postal_customer_parameters()
+{
+    customer_brain = new brain();
+    customer_brain->initalize_socket();
+}
+
 void Widget::start()
 {
     //Widget layout
@@ -55,6 +61,7 @@ void Widget::toggle_connect(bool var)
     {
         if(postal_office_address_line->text().length() > 0)
         {
+            customer_brain->define_postal_service_to_connect_to(postal_office_address_line->text(), 8080);
             connection_status = 1;
             postal_office_address_line->setDisabled(1);
             connect_to_postal_office_button->setDisabled(1);

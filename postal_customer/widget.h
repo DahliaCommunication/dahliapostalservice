@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QWebEngineView>
 
+#include "brain.hpp"
+
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -14,6 +16,7 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
+    void init_postal_customer_parameters();
     void start();
 
 private:
@@ -27,6 +30,9 @@ private:
     QWebEngineView* web_view;
 
     int connection_status;
+
+    brain* customer_brain;
+
 public slots:
     void toggle_connect(bool var);
 };
